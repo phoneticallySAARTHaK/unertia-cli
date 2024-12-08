@@ -19,6 +19,7 @@ const formControlsId = {
 export type FormControls = {
   duration: [number, number]; // [hours, minute]
   accuracy: "1min" | "10s" | "1s";
+  force: boolean;
 };
 
 type AccuracyOptionType = { value: FormControls["accuracy"]; label: string };
@@ -39,19 +40,20 @@ const accuracyOptions: AccuracyOptionType[] = [
 ];
 
 const ignoreIhibitorsOptions: BaseOptionType[] = [
-  { label: "Yes", value: true },
   { label: "No", value: false },
+  { label: "Yes", value: true },
 ];
 
 export const Timer: FC = () => {
   const appDispatch = useAppDispatch();
   const [formValidationStatus, setFormValidationStatus] = useState<
     Record<keyof FormControls, boolean>
-  >({ accuracy: true, duration: false });
+  >({ accuracy: true, duration: false, force: true });
 
   const formValuesRef = useRef<FormControls>({
     accuracy: "1min",
     duration: [0, 0],
+    force: false,
   });
 
   const handleInput = useCallback(
@@ -128,6 +130,9 @@ function SubmitButton({ formValuesRef, isDisabled }: SubmitButtonProps) {
           false,
         ),
         () => {
+          exec(
+            `notify-send 'shutdown timer set for ${`${formValuesRef.current.duration[0]}h${formValuesRef.current.duration[1]}m`}' -a 'Unertia'`,
+          );
           appDispatch({ screen: "Home", type: "navigate" });
         },
       );
