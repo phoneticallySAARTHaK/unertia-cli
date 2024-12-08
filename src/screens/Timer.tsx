@@ -112,7 +112,7 @@ type SubmitButtonProps = {
 function SubmitButton({ formValuesRef, isDisabled }: SubmitButtonProps) {
   const id = "submit";
   const isFocused = useIsFocused(id);
-  const [logs, setLogs] = useState([]);
+  const appDispatch = useAppDispatch();
 
   useInput(
     (_input, key) => {
@@ -127,6 +127,9 @@ function SubmitButton({ formValuesRef, isDisabled }: SubmitButtonProps) {
           `${formValuesRef.current.duration[0]}h${formValuesRef.current.duration[1]}m`,
           false,
         ),
+        () => {
+          appDispatch({ screen: "Home", type: "navigate" });
+        },
       );
     },
     { isActive: isFocused },
@@ -143,8 +146,6 @@ function SubmitButton({ formValuesRef, isDisabled }: SubmitButtonProps) {
         alignSelf="flex-start"
       >
         <Text>Create</Text>
-
-        <Text>{logs.join("\n")}</Text>
       </Box>
     </Focusable>
   );
