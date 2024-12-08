@@ -1,23 +1,14 @@
-import { Box, Text } from "ink";
+import { Text } from "ink";
 import { FC } from "react";
-import { Focusable, useIsFocused } from "./Focusable.js";
+import { ColorScheme } from "../utils/constants.js";
 
-export const Header: FC = () => {
+export type HeaderProps = {
+  screenName: string;
+};
+export const Header: FC<HeaderProps> = ({ screenName }) => {
   return (
-    <Box>
-      <BackButton />
-    </Box>
+    <Text bold color={ColorScheme.primary}>
+      ❱ {screenName}
+    </Text>
   );
 };
-export const BACK_BTN_ID = "BACK";
-function BackButton() {
-  const isFocused = useIsFocused(BACK_BTN_ID);
-
-  return (
-    <Focusable id={BACK_BTN_ID}>
-      <Text bold={isFocused} color={isFocused ? "red" : "gray"}>
-        {"< Home"}
-      </Text>
-    </Focusable>
-  );
-}

@@ -1,4 +1,4 @@
-import { Box, Text } from "ink";
+import { Box } from "ink";
 import { FC, memo, ReactNode, useReducer } from "react";
 import {
   AppDataContext,
@@ -22,7 +22,6 @@ export const App = () => {
     <AppProvider data={state} dispatch={dispatch}>
       <FocusableProvider>
         <AppWrapper>
-          <Text>{state.screen}</Text>
           <Screen />
         </AppWrapper>
       </FocusableProvider>
@@ -44,7 +43,14 @@ const AppWrapper: FC<{ children: ReactNode }> = memo(({ children }) => {
   const [x, y] = useStdOutDimensions();
 
   return (
-    <Box minHeight={20} padding={2} width={x} height={y}>
+    <Box
+      minHeight={30} // Need to change each time
+      padding={1}
+      width={x}
+      height={y}
+      overflowY="visible"
+      flexShrink={0}
+    >
       {children}
     </Box>
   );

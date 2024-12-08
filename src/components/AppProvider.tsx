@@ -1,6 +1,10 @@
 import { createContext, Dispatch, FC, ReactNode, useContext } from "react";
 
-export type ScreenName = "Home" | "Timer";
+export type ScreenName =
+  | "Home"
+  | "Timer"
+  | "Connected_Devices"
+  | "Pair_A_New_Device";
 export type AppDataContext = {
   screen: ScreenName;
   screenList: ScreenName[];

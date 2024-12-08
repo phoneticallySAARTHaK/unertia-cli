@@ -1,5 +1,5 @@
 {
-  "name": "unertia-cli",
+  "name": "unertia",
   "version": "0.0.0",
   "scripts": {
     "dev": "tsc --watch",
