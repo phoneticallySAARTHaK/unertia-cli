@@ -52,13 +52,7 @@ export const TimeInput = forwardRef<FormControls, InputProps>(
     const displayStr = timeString.padStart(4, "0");
 
     return (
-      <Box
-        width="100%"
-        flexDirection="column"
-        justifyContent="flex-start"
-        marginTop={2}
-        flexShrink={0}
-      >
+      <Box width="100%" flexDirection="column" justifyContent="flex-start">
         <Text bold>
           Enter time duration for the Timer
           <Text color="gray" bold={false}>

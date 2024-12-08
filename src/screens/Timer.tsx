@@ -67,10 +67,10 @@ export const Timer: FC = () => {
   useInput(handleInput);
 
   return (
-    <Box flexDirection="column" flexShrink={0}>
+    <Box flexDirection="column">
       <Header screenName="Set a Timer" />
 
-      <Box flexGrow={1} flexDirection="column" gap={1} flexShrink={0}>
+      <Box flexGrow={1} flexDirection="column" gap={1} marginTop={1}>
         <TimeInput
           id={formControlsId.timeInput}
           setValidationStatus={(val) =>
@@ -147,7 +147,6 @@ function SubmitButton({ formValuesRef, isDisabled }: SubmitButtonProps) {
         borderDimColor={isDisabled}
         borderStyle={isDisabled ? "single" : "bold"}
         paddingX={1}
-        flexShrink={0}
         alignSelf="flex-start"
       >
         <Text>Create</Text>

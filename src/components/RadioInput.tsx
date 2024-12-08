@@ -37,7 +37,7 @@ export function RadioInput<T extends BaseOptionType>({
   });
 
   return (
-    <Box flexDirection="column" flexShrink={0}>
+    <Box flexDirection="column">
       <Text bold>
         {label} <Newline />
         <Text color="gray" bold={false}>

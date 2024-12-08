@@ -44,12 +44,11 @@ const AppWrapper: FC<{ children: ReactNode }> = memo(({ children }) => {
 
   return (
     <Box
-      minHeight={30} // Need to change each time
+      minHeight={25} // Need to change each time
       padding={1}
       width={x}
       height={y}
       overflowY="visible"
-      flexShrink={0}
     >
       {children}
     </Box>
